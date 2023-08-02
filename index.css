@@ -1,6 +1,8 @@
 :root {
   --mech-cab-border-color: rgba(255, 255, 255, 0.7);
   --mech-cab-shadow-color: rgba(24, 248, 229, 0.8);
+  --mech-screen-shadow: 0 2px 10px 0 rgb(255 255 255 / 0.1), 0 1px 2px -1px rgb(255 255 255 / 0.1);
+  --mech-screen-border-color: rgba(255, 255, 255, 0.3);
 }
 
 /* html {
@@ -321,6 +323,7 @@ body {
     calc(100% - 10px) 12px
   );
   transform: skew(-30deg, 10deg);
+  /* filter: drop-shadow(0 2px 10px rgba(68, 68, 221, 1)); */
 }
 
 .mech-cab-center-left-border {
@@ -648,6 +651,39 @@ body {
   justify-content: center;
 }
 
+.mech-cab-main-container {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-ordinal-group: 2;
+  order: 2;
+  width: 500px;
+  height: 500px;
+  clip-path: circle(100% at 50% 50%);
+}
+
+.card-container {
+  position: relative;
+  width: 350px;
+  height: 250px;
+  background-position: 50% 50%;
+  background-size: 0.5rem 0.5rem;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.2) 1px, transparent 1px);
+  border: 2px var(--mech-screen-border-color) solid;
+  border-radius: 0.9rem;
+  animation: entrance 25s infinite backwards;
+  box-shadow: var(--mech-screen-shadow);
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.9rem;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.1) 0%, rgba(17, 17, 17, 0) 100%);
+}
+
 @keyframes mech-cab-power-flash-left {
   0% {
     background: linear-gradient(
@@ -678,92 +714,23 @@ body {
   }
 }
 
-.svg-frame {
-  position: relative;
-  width: 455px;
-  height: 455px;
-  order: 2;
-  transform-style: preserve-3d;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  animation: change-view 2s ease-in infinite;
-}
-
-@keyframes change-view {
+@keyframes entrance {
   0%,
-  50% {
-    transform: rotate(-0deg) skew(00deg) translateX(calc(0 * var(--i)))
-      translateY(calc(-0px * var(--i)));
+  0.48%,
+  1.44%,
+  2.4%,
+  3.36%,
+  4.32% {
+    opacity: 0;
   }
-
-  70%,
-  100% {
-    transform: rotate(-80deg) skew(30deg) translateX(calc(45px * var(--i)))
-      translateY(calc(-35px * var(--i)));
+  0.96%,
+  2.4%,
+  3.36%,
+  4.32%,
+  5.28% {
+    opacity: 1;
   }
-}
-
-svg {
-  position: absolute;
-  transition: 0.5s;
-  transform-origin: center;
-  bottom: 0px;
-  width: 450px;
-  height: 450px;
-  fill: none;
-  animation: ease-in-out infinite alternate;
-  filter: drop-shadow(0 0 12px #00aaff);
-}
-
-svg {
-  transform: scale(0.5);
-}
-
-.test {
-  z-index: 1001;
-  position: relative;
-  left: 50%;
-}
-
-#big-centro,
-#outter1,
-#solo-lines,
-#center,
-#outter-center,
-#bottom-dots,
-#center-lines,
-#squares,
-#top-dots {
-  transform-origin: center;
-  animation: rotate 4s ease-in-out infinite alternate;
-}
-
-#big-centro {
-  animation-delay: -1.5s;
-}
-
-#outter1 {
-  animation-delay: -1.2s;
-}
-
-#center {
-  animation-delay: -2.2s;
-}
-
-#bottom-dots,
-#top-dots {
-  animation-duration: 7s;
-}
-
-#center-lines,
-#outter-center {
-  animation-duration: 6s;
-  animation-delay: -3s;
-}
-
-@keyframes rotate {
-  to {
-    transform: rotate(360deg);
+  5.28% to 100% {
+    opacity: 1; /* Or 0, depending on the desired resting state. */
   }
 }
