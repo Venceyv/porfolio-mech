@@ -1227,3 +1227,17 @@ body {
     top: calc(50% - 410px);
   }
 }
+@media screen and (min-width: 3100px) {
+  .mech-cab-horizontal-left-top,
+  .mech-cab-horizontal-right-top {
+    display: block;
+    top: calc(50% - 380px);
+  }
+}
+@media screen and (min-width: 3600px) {
+  .mech-cab-horizontal-left-top,
+  .mech-cab-horizontal-right-top {
+    display: block;
+    top: calc(50% - 360px);
+  }
+}
