@@ -848,6 +848,66 @@ body {
   clip-path: inset(0px 0px 53%);
 }
 
+.mech-cab-horizontal-left-top {
+  display: none;
+  position: fixed;
+  left: calc(50% - 550px);
+  top: calc(50% - 450px);
+  opacity: 1;
+  filter: none;
+  transition: opacity 0.3s linear 0s;
+  transform: rotate(104deg);
+}
+
+.mech-cab-horizontal-left-line-top {
+  display: block;
+  height: 400px;
+  position: relative;
+  width: 23px;
+  background: repeating-linear-gradient(
+    to top,
+    rgb(255, 255, 255) 0px,
+    rgb(255, 255, 255) 0.5%,
+    transparent 0.51%,
+    transparent 9.91%
+  );
+  animation: 2s ease-in-out 0s infinite alternate none running horizontal-left-move;
+}
+
+.mech-cab-horizontal-left-line-top::before {
+  content: '';
+  position: absolute;
+  height: 400px;
+  left: 0px;
+  top: 3%;
+  width: 4px;
+  background: repeating-linear-gradient(
+    to top,
+    rgb(255, 255, 255) 0px,
+    rgb(255, 255, 255) 3%,
+    transparent 3.01%,
+    transparent 9.91%
+  );
+  clip-path: inset(53% 0px 0px);
+}
+
+.mech-cab-horizontal-left-line-top::after {
+  content: '';
+  position: absolute;
+  height: 400px;
+  left: 0px;
+  bottom: 3%;
+  width: 4px;
+  background: repeating-linear-gradient(
+    to top,
+    transparent 0px,
+    transparent 6.9%,
+    rgb(255, 255, 255) 6.91%,
+    rgb(255, 255, 255) 9.91%
+  );
+  clip-path: inset(0px 0px 53%);
+}
+
 .mech-cab-horizontal-right {
   display: block;
   position: fixed;
@@ -891,6 +951,66 @@ body {
 }
 
 .mech-cab-horizontal-right-line::after {
+  content: '';
+  position: absolute;
+  height: 400px;
+  right: 0px;
+  bottom: 3%;
+  width: 4px;
+  background: repeating-linear-gradient(
+    to top,
+    transparent 0px,
+    transparent 6.9%,
+    rgb(255, 255, 255) 6.91%,
+    rgb(255, 255, 255) 9.91%
+  );
+  clip-path: inset(0px 0px 53%);
+}
+
+.mech-cab-horizontal-right-top {
+  display: none;
+  position: absolute;
+  right: calc(50% - 550px);
+  top: calc(50% - 450px);
+  opacity: 1;
+  filter: none;
+  transition: opacity 0.3s linear 0s;
+  transform: rotate(-104deg);
+}
+
+.mech-cab-horizontal-right-line-top {
+  display: block;
+  height: 400px;
+  position: relative;
+  width: 23px;
+  background: repeating-linear-gradient(
+    to top,
+    rgb(255, 255, 255) 0px,
+    rgb(255, 255, 255) 0.5%,
+    transparent 0.51%,
+    transparent 9.91%
+  );
+  animation: 2s ease-in-out 0s infinite alternate none running horizontal-right-move;
+}
+
+.mech-cab-horizontal-right-line-top::before {
+  content: '';
+  position: absolute;
+  height: 400px;
+  right: 0px;
+  top: 3%;
+  width: 4px;
+  background: repeating-linear-gradient(
+    to top,
+    rgb(255, 255, 255) 0px,
+    rgb(255, 255, 255) 3%,
+    transparent 3.01%,
+    transparent 9.91%
+  );
+  clip-path: inset(53% 0px 0px);
+}
+
+.mech-cab-horizontal-right-line-top::after {
   content: '';
   position: absolute;
   height: 400px;
@@ -1081,9 +1201,29 @@ body {
     display: none;
   }
 }
+
 @media screen and (min-width: 1350px) {
   .mech-cab-horizontal-left,
   .mech-cab-horizontal-right {
     display: none;
+  }
+  .mech-cab-horizontal-left-top,
+  .mech-cab-horizontal-right-top {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 1900px) {
+  .mech-cab-horizontal-left-top,
+  .mech-cab-horizontal-right-top {
+    display: block;
+    top: calc(50% - 430px);
+  }
+}
+@media screen and (min-width: 2600px) {
+  .mech-cab-horizontal-left-top,
+  .mech-cab-horizontal-right-top {
+    display: block;
+    top: calc(50% - 410px);
   }
 }
