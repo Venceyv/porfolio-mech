@@ -49,7 +49,7 @@ body {
   width: 100%;
   height: 100%;
   backdrop-filter: blur(1px);
-  transform: translateZ(0px);
+  transform: translateZ(0px) scale(0.95);
 }
 
 .mech-cab-top-triangle {
@@ -167,6 +167,82 @@ body {
     92% 100%
   );
   transform: skew(-30deg, 10deg);
+  animation: 3s ease 0s infinite normal none running mech-cab-power-flash-left;
+}
+
+.mech-cab-bottom-right-flash {
+  position: absolute;
+  display: block;
+  height: 12px;
+  width: 80px;
+  top: calc(50% + 310px);
+  right: calc(50% - 500px);
+  clip-path: polygon(
+    100% 100%,
+    100% 0px,
+    83% 0px,
+    83% 80%,
+    88% 100%,
+    80% 100%,
+    80% 0px,
+    63% 0px,
+    63% 80%,
+    68% 100%,
+    60% 100%,
+    60% 0px,
+    43% 0px,
+    43% 80%,
+    48% 100%,
+    40% 100%,
+    40% 0px,
+    23% 0px,
+    23% 80%,
+    28% 100%,
+    20% 100%,
+    20% 0px,
+    3% 0px,
+    3% 80%,
+    8% 100%
+  );
+  transform: skew(5deg, 15deg);
+  animation: 3s ease 0s infinite normal none running mech-cab-power-flash-right;
+}
+
+.mech-cab-bottom-left-flash {
+  position: absolute;
+  display: block;
+  height: 12px;
+  width: 80px;
+  top: calc(50% + 310px);
+  left: calc(50% - 500px);
+  clip-path: polygon(
+    0px 100%,
+    0px 0px,
+    17% 0px,
+    17% 80%,
+    12% 100%,
+    20% 100%,
+    20% 0px,
+    37% 0px,
+    37% 80%,
+    32% 100%,
+    40% 100%,
+    40% 0px,
+    57% 0px,
+    57% 80%,
+    52% 100%,
+    60% 100%,
+    60% 0px,
+    77% 0px,
+    77% 80%,
+    72% 100%,
+    80% 100%,
+    80% 0px,
+    97% 0px,
+    97% 80%,
+    92% 100%
+  );
+  transform: skew(5deg, -15deg);
   animation: 3s ease 0s infinite normal none running mech-cab-power-flash-left;
 }
 
@@ -674,6 +750,7 @@ body {
   border-radius: 0.9rem;
   animation: entrance 25s infinite backwards;
   box-shadow: var(--mech-screen-shadow);
+  transform: scale(0.95);
 }
 
 .card-container-left {
@@ -687,7 +764,7 @@ body {
   border-radius: 0.9rem;
   animation: entrance-15s 15s infinite backwards;
   box-shadow: var(--mech-screen-shadow);
-  transform: perspective(800px) rotateY(30deg);
+  transform: perspective(800px) rotateY(30deg) scale(0.95);
   transform-style: preserve-3d;
 }
 
@@ -701,7 +778,7 @@ body {
   width: calc(50vw - 400px);
   border-radius: 0.9rem;
   animation: entrance-15s 15s infinite backwards;
-  transform: perspective(800px) rotateY(-30deg);
+  transform: perspective(800px) rotateY(-30deg) scale(0.95);
   box-shadow: var(--mech-screen-shadow);
 }
 
@@ -710,6 +787,193 @@ body {
   height: 100%;
   border-radius: 0.9rem;
   background: linear-gradient(0deg, rgba(255, 255, 255, 0.1) 0%, rgba(17, 17, 17, 0.1) 100%);
+}
+
+.mech-cab-horizontal-left {
+  display: block;
+  position: fixed;
+  left: calc(50% - 550px);
+  top: calc(50% - 235px);
+  opacity: 1;
+  filter: none;
+  transition: opacity 0.3s linear 0s;
+}
+
+.mech-cab-horizontal-left-line {
+  display: block;
+  height: 400px;
+  position: relative;
+  width: 23px;
+  background: repeating-linear-gradient(
+    to top,
+    rgb(255, 255, 255) 0px,
+    rgb(255, 255, 255) 0.5%,
+    transparent 0.51%,
+    transparent 9.91%
+  );
+  animation: 2s ease-in-out 0s infinite alternate none running horizontal-left-move;
+}
+
+.mech-cab-horizontal-left-line::before {
+  content: '';
+  position: absolute;
+  height: 400px;
+  left: 0px;
+  top: 3%;
+  width: 4px;
+  background: repeating-linear-gradient(
+    to top,
+    rgb(255, 255, 255) 0px,
+    rgb(255, 255, 255) 3%,
+    transparent 3.01%,
+    transparent 9.91%
+  );
+  clip-path: inset(53% 0px 0px);
+}
+
+.mech-cab-horizontal-left-line::after {
+  content: '';
+  position: absolute;
+  height: 400px;
+  left: 0px;
+  bottom: 3%;
+  width: 4px;
+  background: repeating-linear-gradient(
+    to top,
+    transparent 0px,
+    transparent 6.9%,
+    rgb(255, 255, 255) 6.91%,
+    rgb(255, 255, 255) 9.91%
+  );
+  clip-path: inset(0px 0px 53%);
+}
+
+.mech-cab-horizontal-right {
+  display: block;
+  position: fixed;
+  right: calc(50% - 550px);
+  top: calc(50% - 235px);
+  opacity: 1;
+  filter: none;
+  transition: opacity 0.3s linear 0s;
+}
+
+.mech-cab-horizontal-right-line {
+  display: block;
+  height: 400px;
+  position: relative;
+  width: 23px;
+  background: repeating-linear-gradient(
+    to top,
+    rgb(255, 255, 255) 0px,
+    rgb(255, 255, 255) 0.5%,
+    transparent 0.51%,
+    transparent 9.91%
+  );
+  animation: 2s ease-in-out 0s infinite alternate none running horizontal-right-move;
+}
+
+.mech-cab-horizontal-right-line::before {
+  content: '';
+  position: absolute;
+  height: 400px;
+  right: 0px;
+  top: 3%;
+  width: 4px;
+  background: repeating-linear-gradient(
+    to top,
+    rgb(255, 255, 255) 0px,
+    rgb(255, 255, 255) 3%,
+    transparent 3.01%,
+    transparent 9.91%
+  );
+  clip-path: inset(53% 0px 0px);
+}
+
+.mech-cab-horizontal-right-line::after {
+  content: '';
+  position: absolute;
+  height: 400px;
+  right: 0px;
+  bottom: 3%;
+  width: 4px;
+  background: repeating-linear-gradient(
+    to top,
+    transparent 0px,
+    transparent 6.9%,
+    rgb(255, 255, 255) 6.91%,
+    rgb(255, 255, 255) 9.91%
+  );
+  clip-path: inset(0px 0px 53%);
+}
+
+.mech-cab-horizontal-bottom {
+  display: block;
+  position: fixed;
+  height: 15px;
+  width: 200px;
+  left: calc(50% - 100px);
+  top: calc(50% + 260px);
+  overflow-x: hidden;
+  padding: 0px 0px 5px;
+  opacity: 1;
+  filter: none;
+  transition: opacity 0.3s linear 0s;
+  transform: scale(1.2);
+}
+
+.mech-cab-horizontal-bottom::before {
+  content: '';
+  height: 5px;
+  width: 10px;
+  display: block;
+  background: rgb(255, 255, 255);
+  position: absolute;
+  bottom: 0px;
+  left: 30%;
+  clip-path: polygon(0px 100%, 100% 100%, 50% 0px);
+}
+
+.mech-cab-horizontal-bottom-line {
+  height: 5px;
+  width: 300px;
+  position: relative;
+  animation: 3s ease-out 0s infinite alternate none running horizontal-center-move;
+  left: -50px;
+  top: 5px;
+  background: repeating-linear-gradient(
+    to left,
+    rgb(255, 255, 255) 0px,
+    rgb(255, 255, 255) 0.5%,
+    transparent 0.51%,
+    transparent 2%
+  );
+}
+
+.mech-cab-horizontal-bottom-line::before {
+  content: '';
+  height: 10px;
+  position: absolute;
+  width: 300px;
+  bottom: 0px;
+  left: 0px;
+  background: repeating-linear-gradient(
+    to left,
+    rgb(255, 255, 255) 0px,
+    rgb(255, 255, 255) 0.5%,
+    transparent 0.51%,
+    transparent 10%
+  );
+}
+
+@keyframes rotate {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 530px 0;
+  }
 }
 
 @keyframes mech-cab-power-flash-left {
@@ -764,22 +1028,62 @@ body {
 }
 
 @keyframes entrance-15s {
-  0%, /* 0 * 0.6 = 0 */
-  0.29%, /* 0.48 * 0.6 = 0.288 */
-  0.86%, /* 1.44 * 0.6 = 0.864 */
-  1.44%, /* 2.4 * 0.6 = 1.44 */
-  2.02%, /* 3.36 * 0.6 = 2.016 */
-  2.59% /* 4.32 * 0.6 = 2.592 */ {
+  0%,
+  0.29%,
+  0.86%,
+  1.44%,
+  2.02%,
+  2.59% {
     opacity: 0;
   }
-  0.58%, /* 0.96 * 0.6 = 0.576 */
-  1.44%, /* 2.4 * 0.6 = 1.44 */
-  2.02%, /* 3.36 * 0.6 = 2.016 */
-  2.59%, /* 4.32 * 0.6 = 2.592 */
+  0.58%,
+  1.44%,
+  2.02%,
+  2.59%,
   3.17% {
     opacity: 1;
   }
   3.17% to 100% {
     opacity: 1;
+  }
+}
+
+@keyframes horizontal-right-move {
+  0% {
+    transform: skewX(-5deg) translateY(10px);
+  }
+  100% {
+    transform: skewX(-5deg) translateY(-10px);
+  }
+}
+
+@keyframes horizontal-left-move {
+  0% {
+    transform: skewX(5deg) translateY(10px);
+  }
+  100% {
+    transform: skewX(5deg) translateY(-10px);
+  }
+}
+
+@keyframes horizontal-center-move {
+  0% {
+    left: -100px;
+  }
+  100% {
+    left: 0px;
+  }
+}
+
+@media screen and (max-width: 1350px) {
+  .card-container-left,
+  .card-container-right {
+    display: none;
+  }
+}
+@media screen and (min-width: 1350px) {
+  .mech-cab-horizontal-left,
+  .mech-cab-horizontal-right {
+    display: none;
   }
 }
