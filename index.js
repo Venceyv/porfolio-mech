@@ -1,5 +1,5 @@
 'use strict';
-
+//
 const randomInRange = (max, min) => Math.floor(Math.random() * (max - min + 1)) + min;
 const ACTIVE_PROBABILITY = 0;
 const BASE_SIZE = 1;
