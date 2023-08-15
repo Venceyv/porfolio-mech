@@ -65,7 +65,7 @@ function generateStarPool(size) {
 // initiate the drawing process and event listeners
 class JumpToHyperspace {
   STATE = {
-    stars: generateStarPool(300),
+    stars: generateStarPool(100),
     bgAlpha: 0,
     sizeInc: SIZE_INC,
     velocity: VELOCITY_INC,
