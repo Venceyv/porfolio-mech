@@ -1,7 +1,8 @@
 :root {
   --mech-cab-border-color: rgba(255, 255, 255, 0.7);
   --mech-cab-shadow-color: rgba(24, 248, 229, 0.8);
-  --mech-screen-shadow: 0 2px 10px 0 rgb(255 255 255 / 0.1), 0 1px 2px -1px rgb(255 255 255 / 0.1);
+  --mech-screen-shadow: 0 2px 10px 0 rgb(255 255 255 / 0.1),
+    0 1px 2px -1px rgb(255 255 255 / 0.1);
   --mech-screen-border-color: rgba(255, 255, 255, 0.3);
 }
 
@@ -12,6 +13,7 @@
   box-sizing: border-box;
   border: 0px;
   margin: 0px;
+  font-family: Monaco, monospace;
 }
 
 canvas {
@@ -409,7 +411,7 @@ body {
 }
 
 .mech-cab-center-left-border::before {
-  content: '';
+  content: "";
   position: absolute;
   display: block;
   width: 30px;
@@ -436,7 +438,7 @@ body {
 }
 
 .mech-cab-center-left-border::after {
-  content: '';
+  content: "";
   position: absolute;
   display: block;
   height: 12px;
@@ -482,7 +484,7 @@ body {
 }
 
 .mech-cab-center-right-border::before {
-  content: '';
+  content: "";
   position: absolute;
   display: block;
   width: 30px;
@@ -509,7 +511,7 @@ body {
 }
 
 .mech-cab-center-right-border::after {
-  content: '';
+  content: "";
   position: absolute;
   display: block;
   height: 12px;
@@ -610,7 +612,7 @@ body {
 }
 
 .mech-menu-horizontal-left-line::before {
-  content: '';
+  content: "";
   position: absolute;
   height: 400px;
   left: 0;
@@ -655,7 +657,7 @@ body {
 }
 
 .mech-menu-horizontal-left-line::after {
-  content: '';
+  content: "";
   position: absolute;
   height: 400px;
   left: 0;
@@ -786,7 +788,11 @@ body {
   width: 100%;
   height: 100%;
   border-radius: 0.9rem;
-  background: linear-gradient(0deg, rgba(255, 255, 255, 0.1) 0%, rgba(17, 17, 17, 0.1) 100%);
+  background: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(17, 17, 17, 0.1) 100%
+  );
 }
 
 .mech-cab-horizontal-left {
@@ -811,11 +817,12 @@ body {
     transparent 0.51%,
     transparent 9.91%
   );
-  animation: 2s ease-in-out 0s infinite alternate none running horizontal-left-move;
+  animation: 2s ease-in-out 0s infinite alternate none running
+    horizontal-left-move;
 }
 
 .mech-cab-horizontal-left-line::before {
-  content: '';
+  content: "";
   position: absolute;
   height: 400px;
   left: 0px;
@@ -832,7 +839,7 @@ body {
 }
 
 .mech-cab-horizontal-left-line::after {
-  content: '';
+  content: "";
   position: absolute;
   height: 400px;
   left: 0px;
@@ -871,11 +878,12 @@ body {
     transparent 0.51%,
     transparent 9.91%
   );
-  animation: 2s ease-in-out 0s infinite alternate none running horizontal-left-move;
+  animation: 2s ease-in-out 0s infinite alternate none running
+    horizontal-left-move;
 }
 
 .mech-cab-horizontal-left-line-top::before {
-  content: '';
+  content: "";
   position: absolute;
   height: 400px;
   left: 0px;
@@ -892,7 +900,7 @@ body {
 }
 
 .mech-cab-horizontal-left-line-top::after {
-  content: '';
+  content: "";
   position: absolute;
   height: 400px;
   left: 0px;
@@ -930,11 +938,12 @@ body {
     transparent 0.51%,
     transparent 9.91%
   );
-  animation: 2s ease-in-out 0s infinite alternate none running horizontal-right-move;
+  animation: 2s ease-in-out 0s infinite alternate none running
+    horizontal-right-move;
 }
 
 .mech-cab-horizontal-right-line::before {
-  content: '';
+  content: "";
   position: absolute;
   height: 400px;
   right: 0px;
@@ -951,7 +960,7 @@ body {
 }
 
 .mech-cab-horizontal-right-line::after {
-  content: '';
+  content: "";
   position: absolute;
   height: 400px;
   right: 0px;
@@ -990,11 +999,12 @@ body {
     transparent 0.51%,
     transparent 9.91%
   );
-  animation: 2s ease-in-out 0s infinite alternate none running horizontal-right-move;
+  animation: 2s ease-in-out 0s infinite alternate none running
+    horizontal-right-move;
 }
 
 .mech-cab-horizontal-right-line-top::before {
-  content: '';
+  content: "";
   position: absolute;
   height: 400px;
   right: 0px;
@@ -1011,7 +1021,7 @@ body {
 }
 
 .mech-cab-horizontal-right-line-top::after {
-  content: '';
+  content: "";
   position: absolute;
   height: 400px;
   right: 0px;
@@ -1043,7 +1053,7 @@ body {
 }
 
 .mech-cab-horizontal-bottom::before {
-  content: '';
+  content: "";
   height: 5px;
   width: 10px;
   display: block;
@@ -1058,7 +1068,8 @@ body {
   height: 5px;
   width: 300px;
   position: relative;
-  animation: 3s ease-out 0s infinite alternate none running horizontal-center-move;
+  animation: 3s ease-out 0s infinite alternate none running
+    horizontal-center-move;
   left: -50px;
   top: 5px;
   background: repeating-linear-gradient(
@@ -1071,7 +1082,7 @@ body {
 }
 
 .mech-cab-horizontal-bottom-line::before {
-  content: '';
+  content: "";
   height: 10px;
   position: absolute;
   width: 300px;
@@ -1084,6 +1095,89 @@ body {
     transparent 0.51%,
     transparent 10%
   );
+}
+
+.wip-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  font-size: 1rem;
+}
+
+.wip-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  color: var(--mech-cab-border-color);
+  width: 90%;
+  text-align: left;
+  animation: entrance 25s infinite backwards;
+}
+
+.wip-blinker {
+  animation: 1.5s infinite normal blink;
+}
+
+.wip-progress {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 0.75rem;
+  font-size: 1.3rem;
+}
+
+.wip-status-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.wip-progress-done {
+  animation: 1.5s infinite ease-in-out blink 1s;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.4;
+  }
+  80% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes glitch {
+  0% {
+    opacity: 0;
+    left: 0;
+  }
+  40%,
+  80% {
+    opacity: 1;
+    left: -2px;
+  }
+}
+
+@keyframes imlec {
+  0% {
+    opacity: 0;
+    left: 0;
+  }
+  40% {
+    opacity: 0;
+    left: -2px;
+  }
+  80% {
+    opacity: 1;
+    left: -2px;
+  }
 }
 
 @keyframes rotate {
@@ -1107,7 +1201,11 @@ body {
     );
   }
   100% {
-    background: linear-gradient(to left, var(--mech-cab-border-color), transparent);
+    background: linear-gradient(
+      to left,
+      var(--mech-cab-border-color),
+      transparent
+    );
   }
 }
 
@@ -1122,7 +1220,11 @@ body {
     );
   }
   100% {
-    background: linear-gradient(to right, var(--mech-cab-border-color), transparent);
+    background: linear-gradient(
+      to right,
+      var(--mech-cab-border-color),
+      transparent
+    );
   }
 }
 
@@ -1241,3 +1343,4 @@ body {
     top: calc(50% - 360px);
   }
 }
+

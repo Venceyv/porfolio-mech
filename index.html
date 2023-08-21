@@ -5,8 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="index.css" />
 
+    <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"
+    defer
+    ></script>
+    <script
+    src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/gsap.min.js"
+    defer
+    ></script>
     <script src="index.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js" defer></script>
     <title>NBTech</title>
   </head>
   <body>
@@ -47,13 +54,42 @@
         <div class="mech-cab-center-right-border">
           <div class="card-container-right">
             <div class="card">
-              <!-- <div class="earth"></div> -->
+              <!-- <div id="mother_container">
+
+              </div>
+              <div id="lines_container ">
+          
+              </div> -->
             </div>
           </div>
         </div>
         <div class="mech-cab-main-container">
           <div class="card-container">
-            <div class="card"></div>
+            <div class="card">
+              <div class="wip-container">
+                <div class="wip-text">
+                  <div class="wip-progress">
+                    <p>█ █ █ █</p>
+                    <p
+                      class="wip-progress-done"
+                      style="color: rgba(31, 34, 34, 0.8)"
+                    >
+                      █ █ █ █ █
+                    </p>
+                    <p>41%</p>
+                  </div>
+                  <div class="wip-status-text">
+                    <p>&gt; Shuffle Error</p>
+                    <p>&gt; Maintenance Required</p>
+                    <p>&gt; xxxx xxx xxx xxx</p>
+                    <p>&gt; xx xxxxx xxx xxxxx</p>
+                    <p>
+                      &gt; Work In Progress <span class="wip-blinker">█</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
