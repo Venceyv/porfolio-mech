@@ -1,100 +1,13 @@
 class Line {
   constructor(opts) {
     this.line_container = opts.line_container;
-    this.copy = opts.copy || "HELLO WORLD!";
+    this.copy = opts.copy || 'HELLO WORLD!';
     this.delay = opts.delay || 0;
-    this.has_underline =
-      typeof opts.has_underline === "boolean" ? opts.has_underline : false;
+    this.has_underline = typeof opts.has_underline === 'boolean' ? opts.has_underline : false;
     this.build();
   } //constructor
 
-  build() {
-    //   this.line_elm = document.createElement("div");
-    //   this.line_elm.classList.add("line");
-    //   this.grad_elm = document.createElement("div");
-    //   this.grad_elm.classList.add("grad");
-    //   this.line_elm.appendChild(this.grad_elm);
-    //   this.copy_elm = document.createElement("div");
-    //   this.copy_elm.classList.add("copy");
-    //   this.copy_elm.innerText = this.copy;
-    //   this.line_elm.appendChild(this.copy_elm);
-    //   this.line_container?.appendChild(this.line_elm);
-    //   this.underline_elm = document.createElement("div");
-    //   this.underline_elm.classList.add("underline");
-    //   this.copy_elm.appendChild(this.underline_elm);
-    //   gsap.set(this.underline_elm, {
-    //     position: "absolute",
-    //     left: 1,
-    //     bottom: 1,
-    //     width: "100%",
-    //     height: "0.15vw",
-    //     backgroundColor: "#7af042",
-    //     opacity: 0
-    //   });
-    // this.animate();
-  } //build
-
-  animate() {
-    let tl = gsap
-      .timeline({ paused: false, delay: this.delay })
-      .set(this.line_elm, { display: "grid" })
-      .set(this.splitting.chars, { opacity: 0, visibility: "visible" })
-      .fromTo(
-        this.line_elm,
-        {
-          "--grad-offset-scale": 1,
-        },
-        {
-          "--grad-offset-scale": -1,
-          duration: 0.5,
-          ease: "power4.inOut",
-        }
-      )
-      .fromTo(
-        this.splitting.chars,
-        { opacity: 1, backgroundColor: "#7df14a" },
-        {
-          opacity: 1,
-          backgroundColor: "transparent",
-          duration: 0.05,
-          stagger: 0.05,
-          ease: "steps(1)",
-        },
-        "-=0.12"
-      )
-      .fromTo(
-        this.splitting.chars,
-        {
-          color: "#fff",
-          textShadow:
-            "0px 0px 6px rgba(255,255,255,1), 0px 0px 15px rgba(255,255,255,1)",
-        },
-        {
-          color: "#7df14a",
-          textShadow:
-            "0px 0px 6px rgba(255,255,255,0), 0px 0px 15px rgba(255,255,255,0)",
-          duration: 0.45,
-          stagger: 0.05,
-        },
-        "<"
-      )
-      .add(
-        function () {
-          this.key_sound.play();
-        }.bind(this),
-        "<"
-      )
-      .add(
-        function () {
-          this.key_sound.stop();
-        }.bind(this),
-        "-=0.25"
-      );
-    if (this.has_underline) {
-      tl.set(this.underline_elm, { opacity: 1 }, "<");
-    }
-    return tl;
-  } //animate
+  build() {} //build
 } //Line
 
 class LineBreak {
@@ -103,17 +16,17 @@ class LineBreak {
     this.build();
   }
   build() {
-    this.line_elm = document.createElement("div");
-    this.line_elm.classList.add("line");
-    this.copy_elm = document.createElement("div");
-    this.copy_elm.innerHTML = "&nbsp;";
+    this.line_elm = document.createElement('div');
+    this.line_elm.classList.add('line');
+    this.copy_elm = document.createElement('div');
+    this.copy_elm.innerHTML = '&nbsp;';
 
     this.line_elm.appendChild(this.copy_elm);
 
     this.line_container?.appendChild(this.line_elm);
   }
   animate() {
-    return gsap.timeline().set(this.line_elm, { display: "grid" });
+    return gsap.timeline().set(this.line_elm, { display: 'grid' });
   }
 } //LineBreak
 
@@ -123,95 +36,92 @@ class BootScreen {
     this.num_lines = 26;
     this.line_sections = 4;
     this.chars = [
-      "A",
-      "X",
-      "Y",
-      "I",
-      "@",
-      "2",
-      "0",
-      "K",
-      "5",
-      "9",
-      "V",
-      "D",
-      "H",
-      "%",
-      "}",
-      "#",
-      "U",
-      "1",
-      "^",
-      ">",
-      "+",
-      "E",
+      'A',
+      'X',
+      'Y',
+      'I',
+      '@',
+      '2',
+      '0',
+      'K',
+      '5',
+      '9',
+      'V',
+      'D',
+      'H',
+      '%',
+      '}',
+      '#',
+      'U',
+      '1',
+      '^',
+      '>',
+      '+',
+      'E',
     ];
-    this.mother_container_elm = document.querySelector("#mother_container");
+    this.mother_container_elm = document.querySelector('#mother_container');
+    this.mother_container_elm2 = document.querySelector('#mother_container2');
     this.build();
   }
 
   build() {
-    this.root_elm = document.createElement("div");
-    this.root_elm.classList.add("boot_screen");
+    this.root_elm = document.createElement('div');
+    this.root_elm.classList.add('boot_screen');
     gsap.set(this.root_elm, {
       top: 0,
       left: 0,
-      width: "100%",
-      height: "100%",
-      display: "grid",
-      gridTemplateRows: "1fr",
-      gridTemplateColumns: "1fr",
-      alignItems: "center",
-      justifyItems: "center",
+      width: '100%',
+      height: '100%',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyItems: 'center',
     });
 
-    this.random_chars_screen = document.createElement("div");
-    this.random_chars_screen.classList.add("random_chars_screen");
+    this.random_chars_screen = document.createElement('div');
+    this.random_chars_screen.classList.add('random_chars_screen');
     gsap.set(this.random_chars_screen, {
-      width: "100%",
-      height: "100%",
+      width: '100%',
+      height: '100%',
       top: 0,
       left: 0,
-      position: "relative",
-      overflow: "hidden",
-      gridRow: 1,
-      gridColumn: 1,
+      position: 'relative',
+      overflow: 'hidden',
     });
 
     this.root_elm.appendChild(this.random_chars_screen);
 
     gsap.set(this.root_elm, {
-      position: "absolute",
+      position: 'absolute',
       left: 0,
       top: 0,
-      width: "100%",
-      height: "100%",
+      width: '100%',
+      height: '100%',
     });
     this.line_elms = [];
     this.line_section_elms = [];
     for (var i = 0; i < this.num_lines; i++) {
-      let line_elm = document.createElement("div");
-      line_elm.classList.add("line_elm");
+      let line_elm = document.createElement('div');
+      line_elm.classList.add('line_elm');
       line_elm.classList.add(`line_elm_${i}`);
-      gsap.set(line_elm, { display: "grid", gridTemplateRows: "1fr" });
+      gsap.set(line_elm, { display: 'grid', gridTemplateRows: '1fr' });
       for (var n = 0; n < this.line_sections; n++) {
-        let sec = document.createElement("div");
+        let sec = document.createElement('div');
         gsap.set(sec, {
-          display: "inline-block",
+          display: 'inline-block',
           opacity: 0,
           gridRow: 1,
-          fontSize: "2vh",
-          justifySelf: gsap.utils.random(["start", "end", "center"]),
+          fontSize: '0.5rem',
+          justifySelf: gsap.utils.random(['start', 'end', 'center']),
         });
-        sec.classList.add("section");
+        sec.classList.add('section');
         let char = gsap.utils.random(this.chars);
         sec.innerHTML = `<span class='char'>${char}</span><span class='char'>${char}</span><span class='char'>${char}</span><span class='char'>${char}</span><span class='char'>${char}</span><span class='char'>${char}</span><span class='char'>${char}</span><span class='char'>${char}</span>`;
         line_elm.appendChild(sec);
-        gsap.set(sec.querySelectorAll(".char"), { opacity: 0 });
-        gsap.set(
-          [...sec.querySelectorAll(".char")].slice(0, gsap.utils.random(2, 7)),
-          { opacity: 1 }
-        );
+        gsap.set(sec.querySelectorAll('.char'), { opacity: 0 });
+        gsap.set([...sec.querySelectorAll('.char')].slice(0, gsap.utils.random(2, 7)), {
+          opacity: 1,
+        });
         this.line_section_elms.push(sec);
       } //for line section
       this.random_chars_screen.appendChild(line_elm);
@@ -223,80 +133,59 @@ class BootScreen {
     } //for
 
     //front bars
-    this.bars_container = document.createElement("div");
-    this.bars_container.classList.add("bars_container");
+    this.bars_container = document.createElement('div');
+    this.bars_container.classList.add('bars_container');
     gsap.set(this.bars_container, {
-      position: "relative",
+      position: 'relative',
       left: 0,
       top: 0,
-      width: "100%",
-      height: "100%",
+      width: '100%',
+      height: '100%',
     });
-    this.random_chars_screen.appendChild(this.bars_container);
+    // this.random_chars_screen.appendChild(this.bars_container);
 
     this.bars_elm = [];
     for (var b = 0; b < this.num_bars; b++) {
-      let bar_elm = document.createElement("div");
-      bar_elm.classList.add("bar_elm");
+      let bar_elm = document.createElement('div');
+      bar_elm.classList.add('bar_elm');
       this.bars_container.appendChild(bar_elm);
 
-      let bar_glow = document.createElement("div");
-      bar_glow.classList.add("bar_glow");
+      let bar_glow = document.createElement('div');
+      bar_glow.classList.add('bar_glow');
       bar_elm.appendChild(bar_glow);
 
       gsap.set(bar_elm, {
-        background: "#80ff10",
-        "--glow-opacity": 0,
-        width: "random(15,100)%",
-        height: "random(1,2)%",
-        position: "absolute",
-        top: "random(0,100)%",
-        left: "random(-25,75)%",
+        background: '#80ff10',
+        '--glow-opacity': 0,
+        width: 'random(15,100)%',
+        height: 'random(1,2)%',
+        position: 'absolute',
+        top: 'random(0,100)%',
+        left: 'random(-25,75)%',
         opacity: 0,
       });
 
       gsap.set(bar_glow, {
-        width: "100%",
-        height: "100%",
-        boxShadow:
-          "0px 0px 5px #80ff10, 0px 0px 15px #80ff10, 0px 0px 20px #80ff10",
-        opacity: "var(--glow-opacity)",
+        width: '100%',
+        height: '100%',
+        boxShadow: '0px 0px 5px #80ff10, 0px 0px 15px #80ff10, 0px 0px 20px #80ff10',
+        opacity: 'var(--glow-opacity)',
       });
 
       this.bars_elm.push(bar_elm);
     } //for this.num_bars
     //end front bars
 
-    //detail screen
-    this.details_screen = document.createElement("div");
-    this.details_screen.classList.add("details_screen");
-    gsap.set(this.details_screen, {
-      display: "grid",
-      gridTemplateRows: "1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr",
-      gridTemplateColumns: "1fr",
-      gridRow: 1,
-      gridColumn: 1,
-      width: "100%",
-      height: "100%",
-      position: "relative",
-      top: 0,
-      left: 0,
-      textTransform: "uppercase",
-      fontSize: "1.1vh",
-    });
-
-    this.root_elm.prepend(this.details_screen);
-
     this.mother_container_elm?.appendChild(this.root_elm);
   } //build
 
   detailsScreenAnimation() {
     let tl = gsap.timeline();
-    this.details_screen.querySelectorAll(".detail_line").forEach(
+    this.details_screen.querySelectorAll('.detail_line').forEach(
       function (line_elm, index) {
-        tl.set(line_elm, { "--text-shadow-opacity": 0 });
+        tl.set(line_elm, { '--text-shadow-opacity': 0 });
         tl.fromTo(
-          line_elm.querySelectorAll(".char"),
+          line_elm.querySelectorAll('.char'),
           {
             opacity: 0,
           },
@@ -307,11 +196,11 @@ class BootScreen {
             onComplete: function () {
               gsap.fromTo(
                 line_elm,
-                { "--text-shadow-opacity": 1 },
+                { '--text-shadow-opacity': 1 },
                 {
-                  "--text-shadow-opacity": 0,
+                  '--text-shadow-opacity': 0,
                   duration: 1,
-                  ease: "expo.out",
+                  ease: 'expo.out',
                 }
               );
 
@@ -319,7 +208,7 @@ class BootScreen {
                 let s = this.detail_beep_sound.clone();
 
                 s.on(
-                  "end",
+                  'end',
                   function () {
                     s._events.end.pop();
                     s.disconnect();
@@ -336,7 +225,7 @@ class BootScreen {
     ); //.('.detail_line').forEach
 
     tl.fromTo(
-      this.random_chars_screen.querySelectorAll(".line_elm"),
+      this.random_chars_screen.querySelectorAll('.line_elm'),
       { opacity: 1 },
       { opacity: 0, duration: 0.01, stagger: 0.1 },
       0
@@ -352,22 +241,22 @@ class BootScreen {
       function (bar_elm) {
         let b_tl = gsap.timeline({ repeatRefresh: true, repeat: -1 });
         b_tl.set(bar_elm, {
-          width: "random(15,100)%",
-          height: "random(1,2)%",
-          top: "random(0,100)%",
-          left: "random(-25,75)%",
+          width: 'random(15,100)%',
+          height: 'random(1,2)%',
+          top: 'random(0,100)%',
+          left: 'random(-25,75)%',
         });
         b_tl.to(bar_elm, {
           opacity: 1,
-          "--glow-opacity": 1,
-          delay: "random(0,2.5)",
+          '--glow-opacity': 1,
+          delay: 'random(0,2.5)',
           duration: 0.05,
-          ease: "expo.out",
+          ease: 'expo.out',
         });
         b_tl.to(bar_elm, {
           opacity: 0,
-          "--glow-opacity": 0,
-          duration: "random(0.2,0.5)",
+          '--glow-opacity': 0,
+          duration: 'random(0.2,0.5)',
         });
         this.bar_tl.add(b_tl, 0);
       }.bind(this)
@@ -382,15 +271,11 @@ class BootScreen {
       .set(this.line_section_elms, { opacity: 0, delay: 0.1 })
       .add(
         function () {
-          for (
-            var ls = 0;
-            ls < this.line_section_elms.length / gsap.utils.random(3, 4, 1);
-            ls++
-          ) {
+          for (var ls = 0; ls < this.line_section_elms.length / gsap.utils.random(3, 4, 1); ls++) {
             let lse = gsap.utils.random(this.line_section_elms);
             gsap.set(lse, {
               opacity: 1,
-              justifySelf: gsap.utils.random(["start", "end", "center"]),
+              justifySelf: gsap.utils.random(['start', 'end', 'center']),
             });
           } //for
         }.bind(this)
@@ -403,7 +288,7 @@ class BootScreen {
       .timeline()
       .add(
         function () {
-          gsap.set(this.root_elm, { display: "grid" });
+          gsap.set(this.root_elm, { display: 'grid' });
           gsap.set(this.bars_container, { opacity: 1 });
           this.charsBGAnimation();
           this.barsAnimation();
@@ -416,7 +301,7 @@ class BootScreen {
           this.bar_tl.pause();
           gsap.set(this.bars_container, { opacity: 0 });
         }.bind(this),
-        "-=0.15"
+        '-=0.15'
       );
     return tl;
   } //animate
@@ -424,10 +309,11 @@ class BootScreen {
 
 class Mother {
   constructor(opts) {
-    this.lines_container = document.querySelector("#lines_container");
-    this.mother_container_elm = document.querySelector("#mother_container");
-    this.lines_copy_array = opts.lines_copy_array || ["HELLO WORLD!!"];
-    this.cmd_seq = opts.cmd_seq || [{ type: "line", copy: "HELLO WORLD!" }];
+    this.lines_container = document.querySelector('#lines_container');
+    this.mother_container_elm = document.querySelector('#mother_container');
+    this.mother_container_elm2 = document.querySelector('#mother_container');
+    this.lines_copy_array = opts.lines_copy_array || ['HELLO WORLD!!'];
+    this.cmd_seq = opts.cmd_seq || [{ type: 'line', copy: 'HELLO WORLD!' }];
     this.lines = [];
     this.cmds = [];
     this.master_tl = gsap.timeline({ paused: true, repeat: -1 });
@@ -457,7 +343,7 @@ class Mother {
       function (cmd, index) {
         let c = null;
         switch (cmd.type) {
-          case "boot":
+          case 'boot':
             c = new BootScreen();
             break;
           default:
@@ -474,5 +360,5 @@ class Mother {
 } //Mother
 
 let mother = new Mother({
-  cmd_seq: [{ type: "boot" }],
+  cmd_seq: [{ type: 'boot' }],
 });
