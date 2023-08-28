@@ -10,15 +10,11 @@ const JUMP_SIZE_INC = 1.15;
 const SIZE_INC = 1.01;
 const RAD = Math.PI / 180;
 const WARP_COLORS = [
-  // [197, 239, 247],
-  // [25, 181, 254],
-  // [77, 5, 232],
-  // [165, 55, 253],
   [255, 255, 255],
-  [255, 255, 255],
-  [255, 255, 255],
-  [255, 255, 255],
-  [255, 255, 255],
+  [254, 254, 254],
+  [253, 253, 253],
+  [252, 252, 252],
+  [251, 251, 251],
 ];
 class Star {
   STATE = {
@@ -60,7 +56,7 @@ function generateStarPool(size) {
 // initiate the drawing process and event listeners
 class JumpToHyperspace {
   STATE = {
-    stars: generateStarPool(200),
+    stars: generateStarPool(180),
     bgAlpha: 0,
     sizeInc: SIZE_INC,
     velocity: VELOCITY_INC,
@@ -220,52 +216,11 @@ class JumpToHyperspace {
   reset = () => {
     this.STATE = {
       ...this.STATE,
-      stars: generateStarPool(300),
+      stars: generateStarPool(180),
     };
     this.setup();
   };
 }
-
-window.myJump = new JumpToHyperspace();
-
-window.addEventListener('resize', () =>
-  setTimeout(() => {
-    window.myJump.reset();
-  }, 250)
-);
-
-// ! disfunction
-class Line {
-  constructor(opts) {
-    this.line_container = opts.line_container;
-    this.copy = opts.copy || 'HELLO WORLD!';
-    this.delay = opts.delay || 0;
-    this.has_underline = typeof opts.has_underline === 'boolean' ? opts.has_underline : false;
-    this.build();
-  } //constructor
-
-  build() {} //build
-} //Line
-
-class LineBreak {
-  constructor(opts) {
-    this.line_container = opts.line_container;
-    this.build();
-  }
-  build() {
-    this.line_elm = document.createElement('div');
-    this.line_elm.classList.add('line');
-    this.copy_elm = document.createElement('div');
-    this.copy_elm.innerHTML = '&nbsp;';
-
-    this.line_elm.appendChild(this.copy_elm);
-
-    this.line_container?.appendChild(this.line_elm);
-  }
-  animate() {
-    return gsap.timeline().set(this.line_elm, { display: 'grid' });
-  }
-} //LineBreak
 
 class BootScreen {
   constructor(opts) {
@@ -273,30 +228,30 @@ class BootScreen {
     this.num_lines = 26;
     this.line_sections = 4;
     this.chars = [
-      'A',
-      'X',
-      'Y',
-      'I',
+      '☇',
+      '☈',
+      '☄',
+      '☌',
       '@',
-      '2',
-      '0',
-      'K',
-      '5',
-      '9',
-      'V',
-      'D',
-      'H',
-      '%',
-      '}',
-      '#',
-      'U',
-      '1',
-      '^',
-      '>',
-      '+',
-      'E',
+      '☍',
+      '☣',
+      '☡',
+      '☠',
+      '☤',
+      '☥',
+      '☦',
+      '☧',
+      '☨',
+      '☩',
+      '♄',
+      '♅',
+      '♃',
+      '♇',
+      '♆',
+      '♢',
+      '⚙',
     ];
-    this.mother_container_elm = document.querySelector('#mother_container');
+    this.mother_container_elm = document.querySelector(opts.main);
     this.build();
   }
 
@@ -318,7 +273,7 @@ class BootScreen {
     this.random_chars_screen.classList.add('random_chars_screen');
     gsap.set(this.random_chars_screen, {
       width: '100%',
-      height: '100%',
+      height: '85%',
       top: 0,
       left: 0,
       position: 'relative',
@@ -379,87 +334,12 @@ class BootScreen {
       width: '100%',
       height: '100%',
     });
-    // this.random_chars_screen.appendChild(this.bars_container);
-
-    this.bars_elm = [];
-    for (var b = 0; b < this.num_bars; b++) {
-      let bar_elm = document.createElement('div');
-      bar_elm.classList.add('bar_elm');
-      this.bars_container.appendChild(bar_elm);
-
-      let bar_glow = document.createElement('div');
-      bar_glow.classList.add('bar_glow');
-      bar_elm.appendChild(bar_glow);
-
-      gsap.set(bar_elm, {
-        background: '#80ff10',
-        '--glow-opacity': 0,
-        width: 'random(15,100)%',
-        height: 'random(1,2)%',
-        position: 'absolute',
-        top: 'random(0,100)%',
-        left: 'random(-25,75)%',
-        opacity: 0,
-      });
-
-      gsap.set(bar_glow, {
-        width: '100%',
-        height: '100%',
-        boxShadow: '0px 0px 5px #80ff10, 0px 0px 15px #80ff10, 0px 0px 20px #80ff10',
-        opacity: 'var(--glow-opacity)',
-      });
-
-      this.bars_elm.push(bar_elm);
-    } //for this.num_bars
-    //end front bars
 
     this.mother_container_elm?.appendChild(this.root_elm);
   } //build
 
   detailsScreenAnimation() {
     let tl = gsap.timeline();
-    this.details_screen.querySelectorAll('.detail_line').forEach(
-      function (line_elm, index) {
-        tl.set(line_elm, { '--text-shadow-opacity': 0 });
-        tl.fromTo(
-          line_elm.querySelectorAll('.char'),
-          {
-            opacity: 0,
-          },
-          {
-            opacity: 1,
-            stagger: 0.01,
-            duration: 0.01,
-            onComplete: function () {
-              gsap.fromTo(
-                line_elm,
-                { '--text-shadow-opacity': 1 },
-                {
-                  '--text-shadow-opacity': 0,
-                  duration: 1,
-                  ease: 'expo.out',
-                }
-              );
-
-              if (this.detail_beep_sound) {
-                let s = this.detail_beep_sound.clone();
-
-                s.on(
-                  'end',
-                  function () {
-                    s._events.end.pop();
-                    s.disconnect();
-                    s = null;
-                  }.bind(this)
-                );
-                s.play();
-                s.sourceNode.playbackRate.value = gsap.utils.random(0.9, 1.5);
-              }
-            }.bind(this),
-          }
-        ); // tl.fromTo
-      }.bind(this)
-    ); //.('.detail_line').forEach
 
     tl.fromTo(
       this.random_chars_screen.querySelectorAll('.line_elm'),
@@ -473,31 +353,6 @@ class BootScreen {
 
   barsAnimation() {
     this.bar_tl = gsap.timeline({ repeatRefresh: true });
-
-    this.bars_elm.forEach(
-      function (bar_elm) {
-        let b_tl = gsap.timeline({ repeatRefresh: true, repeat: -1 });
-        b_tl.set(bar_elm, {
-          width: 'random(15,100)%',
-          height: 'random(1,2)%',
-          top: 'random(0,100)%',
-          left: 'random(-25,75)%',
-        });
-        b_tl.to(bar_elm, {
-          opacity: 1,
-          '--glow-opacity': 1,
-          delay: 'random(0,2.5)',
-          duration: 0.05,
-          ease: 'expo.out',
-        });
-        b_tl.to(bar_elm, {
-          opacity: 0,
-          '--glow-opacity': 0,
-          duration: 'random(0.2,0.5)',
-        });
-        this.bar_tl.add(b_tl, 0);
-      }.bind(this)
-    ); //this.bars_elm.forEach
 
     return this.bar_tl;
   } //barsAnimation
@@ -546,9 +401,9 @@ class BootScreen {
 
 class Mother {
   constructor(opts) {
-    this.lines_container = document.querySelector('#lines_container');
-    this.mother_container_elm = document.querySelector('#mother_container');
-    this.lines_copy_array = opts.lines_copy_array || ['HELLO WORLD!!'];
+    this.opts = opts;
+    this.lines_container = document.querySelector(opts.line);
+    this.mother_container_elm = document.querySelector(opts.main);
     this.cmd_seq = opts.cmd_seq || [{ type: 'line', copy: 'HELLO WORLD!' }];
     this.lines = [];
     this.cmds = [];
@@ -565,22 +420,12 @@ class Mother {
   } //load
 
   buildSeq() {
-    let default_line_opts = {
-      line_container: this.lines_container,
-      key_sound: this.key_sound,
-      has_underline: false,
-    };
-
-    let boot_screen_opts = {
-      boot_sound: this.boot_sound,
-      detail_beep_sound: this.detail_beep_sound,
-    };
     this.cmd_seq.forEach(
       function (cmd, index) {
         let c = null;
         switch (cmd.type) {
           case 'boot':
-            c = new BootScreen();
+            c = new BootScreen({ main: this.opts.main });
             break;
           default:
         }
@@ -595,6 +440,18 @@ class Mother {
   } //loadAndPlay
 } //Mother
 
+window.myJump = new JumpToHyperspace();
+
+window.addEventListener('resize', () => window.myJump.reset());
+
 let mother = new Mother({
   cmd_seq: [{ type: 'boot', direction: 'right' }],
+  line: '#lines_container',
+  main: '#mother_container',
+});
+
+let mother2 = new Mother({
+  cmd_seq: [{ type: 'boot', direction: 'right' }],
+  line: '#lines_container2',
+  main: '#mother_container2',
 });
