@@ -1,19 +1,1 @@
-#mother_container{
-    background: red;
-    height: 100%;
-    width: 100%;
-}
 
-#lines_container{
-    width: 100%;
-    height: 100%;
-}
-
-.main-container {
-    height: 400px;
-    width: 400px;
-}
-
-.boot_screen {
-    position: relative !important;
-}
